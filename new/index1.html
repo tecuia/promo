@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Клиенты уже готовы покупать — почему они не выбирают вас?</title>
+  <link rel="shortcut icon" href="https://inpool.ru/wp-content/uploads/favicon@016x.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="./style1.css">
+</head>
+<body>
+
+<div class="cs-progress">
+  <div class="cs-progress-bar"></div>
+</div>
+
+<div class="cs-page">
+
+  <div id="contentBefore" class="content-before">
+    <header class="cs-hero">
+      <img class="cs-hero-image" 
+           src="https://nativepage.ru/wp-content/uploads/2026/04/people-taking-part-business-event_23-2149346665.avif" 
+           alt="Hero image">
+
+      <h1 class="cs-title">
+        Клиенты уже готовы покупать — почему они не выбирают вас?
+      </h1>
+
+      <a href="https://interpool.com/" class="cs-case-link" target="_blank" rel="noopener noreferrer">
+        <div class="cs-case-block">
+          <img class="cs-case-image" src="./imgs/logo.png" alt="CoreSmart Native">
+          <div class="cs-case-text">
+            <span class="cs-case-company">Interpool</span>
+            <span class="cs-case-published">создано в</span>
+            <span class="cs-case-promo">CoreSmart Native</span>
+          </div>
+        </div>
+      </a>
+
+      <p class="cs-subtitle">
+        Разбираемся, как бренды теряют аудиторию в самый важный момент — и как начать зарабатывать на уже сформированном интересе
+      </p>
+    </header>
+
+    <main class="cs-article">
+      <section class="cs-section">
+        <h2 class="cs-section-title">📌 Почему привычные подходы всё чаще не дотягивают до результата</h2>
+        <p class="cs-text">
+          Многие компании до сих пор оценивают маркетинг через привычные метрики: стоимость клика, охват, количество переходов. Эти показатели важны, но они описывают только начало пути пользователя.
+        </p>
+        <p class="cs-text">
+          Основные потери происходят позже — в момент, когда человек уже заинтересован, уже читает и сравнивает варианты, и остаётся всего один шаг до решения.
+        </p>
+      </section>
+
+      <section class="cs-section">
+        <h2 class="cs-section-title">🧠 Как сегодня принимает решение пользователь</h2>
+        <p class="cs-text">
+          Современный пользователь редко реагирует на рекламу напрямую. Чаще он изучает, сравнивает и постепенно формирует мнение.
+        </p>
+      </section>
+
+      <section class="cs-section cs-cta-section">
+        <p class="cs-cta-text">
+          Далее вы сможете выбрать подходящие функции для себя, чтобы найти самое подходящее<br>решение в статье
+        </p>
+      </section>
+    </main>
+  </div>
+
+  <div class="animation-wrapper">
+    <div id="tinderBlock" class="tinder-window">
+      <div id="whitePulse" class="white-pulse"></div>
+      
+      <div class="tinder-container" id="tinderContainer">
+        
+        <div id="dynamicText" class="tinder-dynamic-text">
+          Выберите подходящий вариант →
+        </div>
+
+        <div id="questionCounter" class="tinder-counter">0/3</div>
+
+        <div id="cardContainer" class="tinder-card-container"></div>
+
+        <div class="tinder-buttons">
+          <button id="tinderNopeBtn" class="tinder-btn tinder-btn-nope">
+            <img src="./imgs/nope.png" alt="Nope">
+          </button>
+          <button id="tinderLikeBtn" class="tinder-btn tinder-btn-like">
+            <img src="./imgs/like.png" alt="Like">
+          </button>
+        </div>
+
+        <div id="successBlock" class="tinder-success-block">
+          <div class="success-title">Тестирование пройдено!</div>
+          
+          <div class="loading-spinner" id="loadingSpinner">
+            <div class="dot" style="--i: 0;"></div>
+            <div class="dot" style="--i: 1;"></div>
+            <div class="dot" style="--i: 2;"></div>
+            <div class="dot" style="--i: 3;"></div>
+            <div class="dot" style="--i: 4;"></div>
+            <div class="dot" style="--i: 5;"></div>
+            <div class="dot" style="--i: 6;"></div>
+            <div class="dot" style="--i: 7;"></div>
+            <div class="dot" style="--i: 8;"></div>
+            <div class="dot" style="--i: 9;"></div>
+            <div class="dot" style="--i: 10;"></div>
+            <div class="dot" style="--i: 11;"></div>
+            <div class="dot" style="--i: 12;"></div>
+            <div class="dot" style="--i: 13;"></div>
+            <div class="dot" style="--i: 14;"></div>
+            <div class="dot" style="--i: 15;"></div>
+          </div>
+          
+          <div class="loading-text" id="loadingText">Подгружаем ваш результат</div>
+          
+          <div class="success-check" id="successCheck">
+              <div class="check-circle">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+            <div class="success-final-text">Успешно!</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div id="contentAfter" class="content-after">
+    <main class="cs-article" id="continueArticle">
+      
+      <div id="dynamicResult"></div>
+      
+      <section class="cs-section">
+        <img class="cs-hero-image" 
+             src="https://nativepage.ru/wp-content/uploads/2026/04/people-taking-part-business-event_23-2149346665.avif" 
+             alt="Hero image">
+      </section>
+
+      <section class="cs-section">
+        <h2 class="cs-section-title">Почему привычные подходы больше не работают</h2>
+        <p class="cs-text">
+          Большинство компаний по-прежнему оценивают эффективность маркетинга через привычные метрики: стоимость клика, охват, количество переходов. Эти показатели важны, но они описывают только начало пути пользователя. Главные потери происходят позже — в тот момент, когда человек уже заинтересован, уже читает, уже сравнивает и почти готов принять решение. Именно здесь, в самой «тёплой» точке воронки, коммуникация с брендом обрывается.
+        </p>
+        <p class="cs-text">
+          Пользователь приходит на статью, проводит на странице несколько минут, погружается в тему — и уходит. Без заявки, без покупки, без контакта. Это не единичный случай, а системная ситуация, с которой сталкивается практически каждый бренд. И проблема здесь не в продукте или цене. Она в том, что в момент, когда человеку нужна помощь в выборе, бренд перестаёт с ним взаимодействовать.
+        </p>
+      </section>
+
+      <section class="cs-section">
+        <h2 class="cs-section-title">⚠️ Где именно бренды теряют клиента</h2>
+        <p class="cs-text">
+          Во многих digital-кампаниях контент, реклама и сайт существуют как отдельные элементы: контент привлекает внимание, реклама приводит трафик, а сайт должен конвертировать. Но между ними часто не хватает логики.
+        </p>
+        <img class="cs-image" src="https://nativepage.ru/wp-content/uploads/2026/04/291jds2.jpg" alt="Воронка">
+      </section>
+
+      <section class="cs-section">
+        <h2 class="cs-section-title">🔄 Когда контент начинает работать как система</h2>
+        <p class="cs-text">
+          Ситуация меняется, когда пользователь не просто читает, а взаимодействует с контентом. Внутри появляются вопросы, сценарии выбора и интерактивные элементы, которые помогают уточнить потребности.
+        </p>
+        <img class="cs-image" src="https://nativepage.ru/wp-content/uploads/2026/04/image-2222.jpg" alt="Интерактив">
+      </section>
+
+      <section class="cs-section">
+        <h2 class="cs-section-title">⚙️ Как работает CoreSmart Native</h2>
+        <p class="cs-text">
+          CoreSmart Native объединяет контент, аналитику и предложение в единую систему. Пока пользователь взаимодействует со страницей, платформа фиксирует поведенческие сигналы и подстраивает следующий шаг сценария.
+        </p>
+        <img class="cs-image" src="https://nativepage.ru/wp-content/uploads/2026/04/image-2223.jpg" alt="Система">
+      </section>
+
+      <section class="cs-section cs-survey-section">
+        <div class="cs-survey-header">
+          <p class="cs-survey-question">⬇️ Попробуйте сами</p>
+        </div>
+        <div class="cs-survey-footer">
+          Листайте дальше, чтобы перейти на сайт Interpool и посмотреть, как мы превращаем внимание аудитории в измеримый результат для бренда.
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+</div>
+
+<div class="cs-s2s-container"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="/teamplate/js/coresmart-s2s.js"></script> 
+<script src="./script1.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+[
+  {
+    "name": "Какие клиенты вам подходят?",
+    "image": "imgs/checker.png",
+    "correct": true,
+    "type": "type-1"
+  },
+  {
+    "name": "Какие клиенты вам подходят?",
+    "image": "imgs/checker.png",
+    "correct": true,
+    "type": "type-1"
+  },
+  {
+    "name": "Какие клиенты вам подходят?",
+    "image": "imgs/checker.png",
+    "correct": true,
+    "type": "type-1"
+  }
+]
+
