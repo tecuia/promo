@@ -26,28 +26,10 @@
   // CONFIG
   // ============================================
 
-  const finalData = {
-    'type-1': {
-      img: './imgs/f1.png',
-      title: 'City Bay',
-      desc: 'ЖК бизнес-класса на берегу Москвы-реки'
-    },
-    'type-2': {
-      img: './imgs/f2.png',
-      title: 'ЖК VEER',
-      desc: 'Премиальный загородный проект'
-    },
-    'type-3': {
-      img: './imgs/f3.png',
-      title: 'МЫС',
-      desc: 'Новый мультиквартал в Западном округе'
-    }
-  };
-
   const stepTexts = [
-    'Выберите подходящий вариант →',
-    'Отлично! Продолжаем →',
-    'Почти готово! →'
+    'Мои клиенты чаще покупают...',
+    'Мои клиенты чаще покупают...',
+    'Какие клиенты вам подходят?'
   ];
 
   // ============================================
@@ -79,9 +61,9 @@
   const loadingSpinner = document.getElementById('loadingSpinner');
   const loadingText = document.getElementById('loadingText');
   const successCheck = document.getElementById('successCheck');
-  const dynamicResult = document.getElementById('dynamicResult');
   const contentBefore = document.getElementById('contentBefore');
   const contentAfter = document.getElementById('contentAfter');
+  const cardDescriptionText = document.getElementById('cardDescriptionText');
 
   // ============================================
   // SCROLL CONTROL
@@ -183,15 +165,34 @@
       const response = await fetch('./data.json');
       cardData = await response.json();
       initScrollAnimation();
+      loadCards();
     } catch (error) {
       console.warn('Data.json not found, using fallback:', error);
       cardData = [
-        { name: "Виды на парк и площадь", image: "./imgs/1.png", correct: true, type: "type-1" },
-        { name: "Многоквартирные и Клубные дома", image: "./imgs/2.png", correct: true, type: "type-1" },
-        { name: "Многоквартирные и Клубные дома 2", image: "./imgs/2.png", correct: true, type: "type-2" },
-        { name: "Городская жизнь с близостью к природе", image: "./imgs/3.png", correct: true, type: "type-3" }
+        {
+          "name": "Дорогие товары(премиум)",
+          "image": "imgs/1.png",
+          "correct": true,
+          "type": "type-1",
+          "description": "Большинство компаний по-прежнему оценивают эффективность маркетинга через привычные метрики: стоимость клика, охват, количество переходов. Эти показатели важны, но они описывают только начало "
+        },
+        {
+          "name": "Новинки и эксперементы",
+          "image": "imgs/2.png",
+          "correct": true,
+          "type": "type-1",
+          "description": "Большинство компаний по-прежнему оценивают эффективность маркетинга через привычные метрики: стоимость клика, охват, количество переходов. Эти показатели важны, но они описывают только начало "
+        },
+        {
+          "name": "Товары по акции или скидке",
+          "image": "imgs/3.png",
+          "correct": true,
+          "type": "type-1",
+          "description": "Большинство компаний по-прежнему оценивают эффективность маркетинга через привычные метрики: стоимость клика, охват, количество переходов. Эти показатели важны, но они описывают только начало "
+        }
       ];
       initScrollAnimation();
+      loadCards();
     }
   }
 
@@ -235,10 +236,44 @@
           mechanicStarted = true;
           document.body.classList.add('tinder-active');
           disableScroll();
+          
+          entryTl.kill();
+          
+          gsap.set(tinderBlock, {
+            width: "min(1430px, 95vw)",
+            height: "min(846px, 85vh)",
+            borderRadius: "16px",
+            clearProps: "transform"
+          });
+          
           loadCards();
         }
       }
     });
+  }
+
+  // ============================================
+  // UPDATE DESCRIPTION TEXT
+  // ============================================
+  
+  function updateDescriptionText(cardData) {
+    if (!cardDescriptionText) return;
+    
+    if (cardData && cardData.description) {
+      gsap.to(cardDescriptionText, {
+        opacity: 0,
+        duration: 0.2,
+        onComplete: () => {
+          cardDescriptionText.textContent = cardData.description;
+          gsap.to(cardDescriptionText, {
+            opacity: 1,
+            duration: 0.3
+          });
+        }
+      });
+    } else {
+      cardDescriptionText.textContent = 'Большинство компаний по-прежнему оценивают эффективность маркетинга через привычные метрики: стоимость клика, охват, количество переходов. Эти показатели важны, но они описывают только начало';
+    }
   }
 
   // ============================================
@@ -272,11 +307,10 @@
           contentAfter.style.visibility = 'visible';
         }
         
-        const targetSection = document.querySelector('#dynamicResult') || 
-                              document.querySelector('#contentAfter .cs-section');
-        if (targetSection) {
+        // Просто скроллим к контенту после механики
+        if (contentAfter) {
           setTimeout(() => {
-            targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            contentAfter.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }, 100);
         }
       }
@@ -374,28 +408,32 @@
     const step = Math.min(answered, stepTexts.length - 1);
     dynamicText.textContent = stepTexts[step];
     
+    // Обновляем текст под окном
+    const currentCardData = currentData[currentData.length - cards.length];
+    updateDescriptionText(currentCardData);
+    
     Array.from(cards).reverse().forEach((card, idx) => {
       card.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s ease, filter 0.5s ease';
       
       if (idx === 0) {
-        card.style.transform = 'translateX(0) translateY(0) scale(1) rotate(0deg)';
+        card.style.transform = 'translateX(0) translateY(60px) scale(1.05) rotate(0deg)';
         card.style.zIndex = 1000;
         card.style.opacity = '1';
         card.style.filter = 'blur(0px)';
       } else if (idx === 1) {
-        card.style.transform = 'translateX(-40px) translateY(15px) scale(0.9)';
+        card.style.transform = 'translateX(-170px) translateY(30px) scale(0.85)';
         card.style.zIndex = 999;
-        card.style.opacity = '0.8';
-        card.style.filter = 'blur(5px)';
+        card.style.opacity = '1';
+        card.style.filter = 'blur(0px)';
       } else if (idx === 2) {
-        card.style.transform = 'translateX(40px) translateY(15px) scale(0.9)';
+        card.style.transform = 'translateX(170px) translateY(30px) scale(0.85)';
         card.style.zIndex = 998;
-        card.style.opacity = '0.8';
-        card.style.filter = 'blur(5px)';
+        card.style.opacity = '1';
+        card.style.filter = 'blur(0px)';
       } else {
         card.style.transform = 'translateX(0) translateY(30px) scale(0.8)';
         card.style.opacity = '0';
-        card.style.filter = 'blur(10px)';
+        card.style.filter = 'blur(0px)';
         card.style.zIndex = 900 - idx;
       }
     });
@@ -513,6 +551,14 @@
     questionCounter.style.display = 'none';
     dynamicText.style.display = 'none';
     
+    // Скрываем текст описания
+    if (cardDescriptionText) {
+      gsap.to(cardDescriptionText, {
+        opacity: 0,
+        duration: 0.3
+      });
+    }
+    
     successBlock.style.display = 'block';
     determineWinner();
     
@@ -541,6 +587,7 @@
   }
 
   function determineWinner() {
+    // Просто подсчитываем результаты (без отображения)
     const typeCounts = { 'type-1': 0, 'type-2': 0, 'type-3': 0 };
     
     results.forEach(r => {
@@ -557,7 +604,10 @@
       }
     });
     
-    return finalData[maxType] || finalData['type-1'];
+    // Можно логировать в консоль для отладки
+    console.log('Механика завершена! Выбран тип:', maxType);
+    
+    return maxType;
   }
 
   function updateCounter() {
@@ -582,6 +632,11 @@
     
     if (contentBefore) {
       contentBefore.style.display = '';
+    }
+    
+    if (cardDescriptionText) {
+      cardDescriptionText.style.opacity = '0';
+      cardDescriptionText.style.visibility = 'hidden';
     }
     
     gsap.set(tinderBlock, {
