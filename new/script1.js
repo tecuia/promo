@@ -181,14 +181,14 @@
           "image": "imgs/2.png",
           "correct": true,
           "type": "type-1",
-          "description": "Большинство компаний по-прежнему оценивают эффективность маркетинга через привычные метрики: стоимость клика, охват, количество переходов. Эти показатели важны, но они описывают только начало "
+          "description": "Большинство3 компаний по-прежнему оценивают эффективность маркетинга через привычные метрики: стоимость клика, охват, количество переходов. Эти показатели важны, но они описывают только начало "
         },
         {
           "name": "Товары по акции или скидке",
           "image": "imgs/3.png",
           "correct": true,
           "type": "type-1",
-          "description": "Большинство компаний по-прежнему оценивают эффективность маркетинга через привычные метрики: стоимость клика, охват, количество переходов. Эти показатели важны, но они описывают только начало "
+          "description": "Большинство2 компаний по-прежнему оценивают эффективность маркетинга через привычные метрики: стоимость клика, охват, количество переходов. Эти показатели важны, но они описывают только начало "
         }
       ];
       initScrollAnimation();
@@ -302,6 +302,16 @@
         enableScroll();
         setupScrollBlocker();
         
+            if (typeof CoreSmartS2S !== 'undefined') {
+              CoreSmartS2S.init({
+                linkToOpen: "https://inpool.ru/",
+                linkToShow: "inpool.ru",
+                previewImage: "./imgs/preview.png",
+                previewImageMob: "./imgs/previewMob.png",
+                minScrollPercent: 100
+              });
+            }
+        
         if (contentAfter) {
           contentAfter.style.opacity = '1';
           contentAfter.style.visibility = 'visible';
@@ -311,6 +321,8 @@
         if (contentAfter) {
           setTimeout(() => {
             contentAfter.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // const s2sContainer = document.querySelector('.cs-s2s-container');
+    
           }, 100);
         }
       }
@@ -669,17 +681,17 @@
   // ============================================
   
   window.addEventListener('load', function() {
-    const s2sContainer = document.querySelector('.cs-s2s-container');
+    // const s2sContainer = document.querySelector('.cs-s2s-container');
     
-    if (s2sContainer && typeof CoreSmartS2S !== 'undefined') {
-      CoreSmartS2S.init({
-        linkToOpen: "https://inpool.ru/",
-        linkToShow: "inpool.ru",
-        previewImage: "./imgs/preview.png",
-        previewImageMob: "./imgs/previewMob.png",
-        minScrollPercent: 100
-      });
-    }
+    // if (s2sContainer && typeof CoreSmartS2S !== 'undefined') {
+    //   CoreSmartS2S.init({
+    //     linkToOpen: "https://inpool.ru/",
+    //     linkToShow: "inpool.ru",
+    //     previewImage: "./imgs/preview.png",
+    //     previewImageMob: "./imgs/previewMob.png",
+    //     minScrollPercent: 100
+    //   });
+    // }
   });
 
   // ============================================
