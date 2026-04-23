@@ -174,21 +174,21 @@
           "image": "imgs/1.png",
           "correct": true,
           "type": "type-1",
-          "description": "Большинство компаний по-прежнему оценивают эффективность маркетинга через привычные метрики: стоимость клика, охват, количество переходов. Эти показатели важны, но они описывают только начало "
+          "description": "Большинство1 компаний по-прежнему оценивают эффективность маркетинга через привычные метрики: стоимость клика, охват, количество переходов. Эти показатели важны, но они описывают только начало "
         },
         {
           "name": "Новинки и эксперементы",
           "image": "imgs/2.png",
           "correct": true,
           "type": "type-1",
-          "description": "Большинство3 компаний по-прежнему оценивают эффективность маркетинга через привычные метрики: стоимость клика, охват, количество переходов. Эти показатели важны, но они описывают только начало "
+          "description": "Большинство2 компаний по-прежнему оценивают эффективность маркетинга через привычные метрики: стоимость клика, охват, количество переходов. Эти показатели важны, но они описывают только начало "
         },
         {
           "name": "Товары по акции или скидке",
           "image": "imgs/3.png",
           "correct": true,
           "type": "type-1",
-          "description": "Большинство2 компаний по-прежнему оценивают эффективность маркетинга через привычные метрики: стоимость клика, охват, количество переходов. Эти показатели важны, но они описывают только начало "
+          "description": "Большинство3 компаний по-прежнему оценивают эффективность маркетинга через привычные метрики: стоимость клика, охват, количество переходов. Эти показатели важны, но они описывают только начало "
         }
       ];
       initScrollAnimation();
@@ -253,27 +253,25 @@
   }
 
   // ============================================
-  // UPDATE DESCRIPTION TEXT
+  // UPDATE DESCRIPTION TEXT (FadeIn/Out 300ms)
   // ============================================
   
   function updateDescriptionText(cardData) {
     if (!cardDescriptionText) return;
     
-    if (cardData && cardData.description) {
-      gsap.to(cardDescriptionText, {
-        opacity: 0,
-        duration: 0.2,
-        onComplete: () => {
-          cardDescriptionText.textContent = cardData.description;
-          gsap.to(cardDescriptionText, {
-            opacity: 1,
-            duration: 0.3
-          });
-        }
-      });
-    } else {
-      cardDescriptionText.textContent = 'Большинство компаний по-прежнему оценивают эффективность маркетинга через привычные метрики: стоимость клика, охват, количество переходов. Эти показатели важны, но они описывают только начало';
-    }
+    gsap.to(cardDescriptionText, {
+      opacity: 0,
+      duration: 0.3,
+      onComplete: () => {
+        cardDescriptionText.textContent = cardData?.description || 
+          'Большинство компаний по-прежнему оценивают эффективность маркетинга через привычные метрики: стоимость клика, охват, количество переходов. Эти показатели важны, но они описывают только начало';
+        
+        gsap.to(cardDescriptionText, {
+          opacity: 1,
+          duration: 0.3
+        });
+      }
+    });
   }
 
   // ============================================
@@ -302,27 +300,24 @@
         enableScroll();
         setupScrollBlocker();
         
-            if (typeof CoreSmartS2S !== 'undefined') {
-              CoreSmartS2S.init({
-                linkToOpen: "https://inpool.ru/",
-                linkToShow: "inpool.ru",
-                previewImage: "./imgs/preview.png",
-                previewImageMob: "./imgs/previewMob.png",
-                minScrollPercent: 100
-              });
-            }
-        
+        if (typeof CoreSmartS2S !== 'undefined') {
+          CoreSmartS2S.init({
+            linkToOpen: "https://inpool.ru/",
+            linkToShow: "inpool.ru",
+            previewImage: "./imgs/preview.png",
+            previewImageMob: "./imgs/previewMob.png",
+            minScrollPercent: 100
+          });
+        }
+
         if (contentAfter) {
           contentAfter.style.opacity = '1';
           contentAfter.style.visibility = 'visible';
         }
         
-        // Просто скроллим к контенту после механики
         if (contentAfter) {
           setTimeout(() => {
             contentAfter.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            // const s2sContainer = document.querySelector('.cs-s2s-container');
-    
           }, 100);
         }
       }
@@ -420,32 +415,28 @@
     const step = Math.min(answered, stepTexts.length - 1);
     dynamicText.textContent = stepTexts[step];
     
-    // Обновляем текст под окном
+    // Обновляем текст под окном с fadeIn/Out
     const currentCardData = currentData[currentData.length - cards.length];
     updateDescriptionText(currentCardData);
     
     Array.from(cards).reverse().forEach((card, idx) => {
-      card.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s ease, filter 0.5s ease';
+      card.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s ease';
       
       if (idx === 0) {
         card.style.transform = 'translateX(0) translateY(60px) scale(1.05) rotate(0deg)';
         card.style.zIndex = 1000;
         card.style.opacity = '1';
-        card.style.filter = 'blur(0px)';
       } else if (idx === 1) {
         card.style.transform = 'translateX(-170px) translateY(30px) scale(0.85)';
         card.style.zIndex = 999;
         card.style.opacity = '1';
-        card.style.filter = 'blur(0px)';
       } else if (idx === 2) {
         card.style.transform = 'translateX(170px) translateY(30px) scale(0.85)';
         card.style.zIndex = 998;
         card.style.opacity = '1';
-        card.style.filter = 'blur(0px)';
       } else {
         card.style.transform = 'translateX(0) translateY(30px) scale(0.8)';
         card.style.opacity = '0';
-        card.style.filter = 'blur(0px)';
         card.style.zIndex = 900 - idx;
       }
     });
@@ -599,7 +590,6 @@
   }
 
   function determineWinner() {
-    // Просто подсчитываем результаты (без отображения)
     const typeCounts = { 'type-1': 0, 'type-2': 0, 'type-3': 0 };
     
     results.forEach(r => {
@@ -616,7 +606,6 @@
       }
     });
     
-    // Можно логировать в консоль для отладки
     console.log('Механика завершена! Выбран тип:', maxType);
     
     return maxType;
@@ -681,16 +670,16 @@
   // ============================================
   
   window.addEventListener('load', function() {
-    // const s2sContainer = document.querySelector('.cs-s2s-container');
+    //const s2sContainer = document.querySelector('.cs-s2s-container');
     
-    // if (s2sContainer && typeof CoreSmartS2S !== 'undefined') {
-    //   CoreSmartS2S.init({
-    //     linkToOpen: "https://inpool.ru/",
-    //     linkToShow: "inpool.ru",
-    //     previewImage: "./imgs/preview.png",
-    //     previewImageMob: "./imgs/previewMob.png",
-    //     minScrollPercent: 100
-    //   });
+    //if (s2sContainer && typeof CoreSmartS2S !== 'undefined') {
+    //  CoreSmartS2S.init({
+    //    linkToOpen: "https://inpool.ru/",
+    //    linkToShow: "inpool.ru",
+    //    previewImage: "./imgs/preview.png",
+    //    previewImageMob: "./imgs/previewMob.png",
+    //    minScrollPercent: 100
+    //  });
     // }
   });
 
