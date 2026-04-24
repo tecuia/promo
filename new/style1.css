@@ -1,18 +1,14 @@
-/* ============================================ */
-/* RESET & BASE */
-/* ============================================ */
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
-body {
-  line-height: 1.45;
-  background: #fff;
-  color: #111;
-  font-size: 18px;
+body{
+  line-height:1.45;
+  background:#fff;
+  color:#111;
+  font-size:18px;
   font-weight: 300;
   font-family: "Manrope", sans-serif;
   font-optical-sizing: auto;
@@ -31,74 +27,89 @@ img {
   object-fit: cover;
 }
 
-/* ============================================ */
-/* PROGRESS BAR */
-/* ============================================ */
-
-.cs-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background: #eee;
-  z-index: 1001;
-}
-
-.cs-progress-bar {
-  height: 100%;
-  width: 0%;
-  background: #e31b1b;
-  will-change: width;
-}
-
-/* ============================================ */
+/* ===================== */
 /* PAGE LAYOUT */
-/* ============================================ */
+/* ===================== */
 
-.cs-page {
+.cs-page{
   padding-top: 60px;
-  display: flex;
-  flex-direction: column;
+  display:flex;
+  flex-direction:column;
 }
 
-/* ============================================ */
+/* ===================== */
+/* PROGRESS BAR */
+/* ===================== */
+
+.cs-progress{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:3px;
+  background:#eee;
+  z-index:1000;
+}
+
+.cs-progress-bar{
+  height:100%;
+  width:0%;
+  background:#e31b1b;
+}
+
+/* ===================== */
 /* HERO */
-/* ============================================ */
+/* ===================== */
 
-.cs-hero {
-  padding: 60px 0px;
-  text-align: center;
+.cs-hero{
+  padding:60px 0px;
+  text-align:center;
   max-width: 720px;
+  width: 100%;
   margin: 0 auto;
-  padding: 0 20px 60px;
+  padding: 0 20px;
+  box-sizing: border-box;
 }
 
-.cs-title {
-  font-size: 42px;
+.cs-title, h1{
+  font-size:36px;
+  margin-bottom:10px;
+  max-width: 100%;
+  text-align: left;
   margin-bottom: 20px;
-  text-align: left;
+  font-size: 42px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
   font-weight: 400;
-  line-height: 1.2;
+  line-height: normal;
 }
 
-.cs-subtitle {
+.cs-subtitle{
+  color:#666;
   text-align: left;
+  max-width: 100%;
   font-size: 18px;
   line-height: 1.6;
   color: #333;
-  margin-top: 20px;
+  margin: 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
-.cs-hero-image {
-  width: 100%;
-  border-radius: 10px;
-  margin-bottom: 30px;
+.cs-hero-image{
+  width:100%;
+  margin-top:30px;
+  border-radius:10px;
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto 30px;
+  border-radius: 12px;
 }
 
-/* ============================================ */
-/* CASE BLOCK (КОНТУР ОСТАВЛЕН) */
-/* ============================================ */
+/* ===================== */
+/* CASE BLOCK */
+/* ===================== */
 
 .cs-case-link {
   text-decoration: none;
@@ -113,7 +124,6 @@ img {
   background: #f5f5f5;
   padding: 10px 16px;
   border-radius: 12px;
-  border: 1px solid #e0e0e0;
 }
 
 .cs-case-image {
@@ -121,10 +131,12 @@ img {
   height: 52px;
   object-fit: cover;
   border-radius: 50%;
+  flex-shrink: 0;
 }
 
 .cs-case-text {
   font-size: 16px;
+  line-height: 1.4;
   text-align: left;
 }
 
@@ -133,6 +145,7 @@ img {
   color: #000;
   display: block;
   font-size: 20px;
+  margin-bottom: 4px;
 }
 
 .cs-case-published {
@@ -143,42 +156,120 @@ img {
 .cs-case-promo {
   color: #0066ff;
   font-weight: 500;
+  font-size: 16px;
 }
 
-/* ============================================ */
+/* ===================== */
 /* ARTICLE */
-/* ============================================ */
+/* ===================== */
 
-.cs-article {
-  max-width: 720px;
-  margin: auto;
-  padding: 20px;
+.cs-article{
+  max-width:720px;
+  margin:auto;
+  padding:20px;
 }
 
-.cs-section {
-  margin: 60px 0;
+.cs-section{
+  margin:60px 0;
 }
 
-.cs-section-title {
-  font-size: 32px;
+.cs-article > :not(.cs-section), .cs-section > * {
+  margin-block-start: 1.2rem;
+  margin-block-end: 0;
+}
+
+.cs-section-title, h2{
+  font-size:32px;
   font-weight: 400;
-  margin-bottom: 20px;
 }
 
-.cs-text {
-  font-size: 18px;
-  margin-bottom: 20px;
+.cs-text, p{
+  font-size:18px;
 }
 
-.cs-image {
-  width: 100%;
-  border-radius: 8px;
-  margin: 20px 0;
+.cs-text,
+.cs-section-title,
+.cs-list li,
+.cs-quote, p, li {
+  text-align: left;
 }
 
-/* ============================================ */
-/* CTA SECTION */
-/* ============================================ */
+/* ===================== */
+/* IMAGE */
+/* ===================== */
+
+.cs-image{
+  width:100%;
+  border-radius:8px;
+}
+
+.cs-caption{
+  font-size:14px;
+  color:#777;
+  margin-top:6px;
+}
+
+/* ===================== */
+/* LIST */
+/* ===================== */
+
+.cs-list{
+  padding-left:20px;
+}
+
+/* ===================== */
+/* QUOTE */
+/* ===================== */
+
+.cs-quote{
+  font-size:22px;
+  font-style:italic;
+  border-left:4px solid #000;
+  padding-left:20px;
+}
+
+/* ===================== */
+/* CARDS */
+/* ===================== */
+
+.cs-cards{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+.cs-card img{
+  width:100%;
+  border-radius:6px;
+}
+
+.cs-card h3{
+  margin-top:10px;
+}
+
+/* ===================== */
+/* CTA */
+/* ===================== */
+
+.cs-cta{
+  padding:80px 20px;
+  text-align:center;
+  background:#f5f5f5;
+}
+
+.cs-button{
+  display:inline-block;
+  margin-top:20px;
+  padding:14px 30px;
+  background:#000;
+  color:#fff;
+  text-decoration:none;
+  border-radius:8px;
+}
+
+/* ===================== */
+/* CTA SECTION (Tinder transition) */
+/* ===================== */
 
 .cs-cta-section {
   background: #f9f9f9;
@@ -192,86 +283,62 @@ img {
   font-size: 22px;
   font-weight: 500;
   color: #111;
+  text-align: center;
 }
 
-/* ============================================ */
+/* ===================== */
 /* SURVEY SECTION */
-/* ============================================ */
+/* ===================== */
 
 .cs-survey-section {
   margin: 40px 0;
   padding: 24px;
   background: #f9f9f9;
   border-radius: 16px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .cs-survey-header {
-  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
 }
 
 .cs-survey-question {
   font-size: 20px;
   font-weight: 600;
+  text-align: center;
   color: #333;
+  margin: 0;
 }
 
 .cs-survey-footer {
   font-size: 14px;
   font-weight: 700;
   color: #000;
+  text-align: left;
+  margin: 20px 0 16px;
   line-height: 1.5;
+  word-wrap: break-word;
 }
 
-/* ============================================ */
-/* RESULT CARD */
-/* ============================================ */
+/* ===================== */
+/* FOOTER */
+/* ===================== */
 
-.result-card {
-  background: #fff;
-  border-radius: 16px;
-  padding: 30px;
-  margin-bottom: 40px;
-  border: 1px solid #e0e0e0; 
+.cs-footer{
+  text-align:center;
+  padding:40px;
+  color:#777;
 }
 
-.result-title {
-  font-size: 28px;
-  font-weight: 600;
-  margin-bottom: 20px;
-  color: #111;
-}
-
-.result-image {
-  width: 100%;
-  border-radius: 12px;
-  margin-bottom: 20px;
-}
-
-.result-description {
-  font-size: 18px;
-  line-height: 1.6;
-  color: #333;
-  margin-bottom: 20px;
-}
-
-.result-button {
-  display: inline-block;
-  padding: 14px 32px;
-  background: #0066ff;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: 500;
-  transition: background 0.3s ease;
-}
-
-.result-button:hover {
-  background: #0052cc;
-}
-
-/* ============================================ */
+/* ===================== */
 /* CONTENT VISIBILITY */
-/* ============================================ */
+/* ===================== */
 
 .content-before,
 .content-after {
@@ -285,9 +352,9 @@ body.tinder-active .content-after {
   pointer-events: none;
 }
 
-/* ============================================ */
+/* ===================== */
 /* ANIMATION WRAPPER */
-/* ============================================ */
+/* ===================== */
 
 .animation-wrapper {
   min-height: 100vh;
@@ -300,15 +367,13 @@ body.tinder-active .content-after {
   width: 100%;
 }
 
-/* ============================================ */
+/* ===================== */
 /* TINDER WINDOW */
-/* ============================================ */
+/* ===================== */
 
 .tinder-window {
   background-color: #fff;
-  /*border: 1px solid #0000001F;*/
   width: min(926px, 95vw);  
-  /*height: min(800px, 60vh);*/
   border-radius: 24px;
   display: flex;
   flex-direction: column;
@@ -330,9 +395,9 @@ body.tinder-active .content-after {
   z-index: 9999;
 }
 
-/* ============================================ */
+/* ===================== */
 /* TINDER CONTAINER */
-/* ============================================ */
+/* ===================== */
 
 .tinder-container {
   width: 100%;
@@ -345,9 +410,9 @@ body.tinder-active .content-after {
   position: relative;
 }
 
-/* ============================================ */
+/* ===================== */
 /* DYNAMIC TEXT & COUNTER */
-/* ============================================ */
+/* ===================== */
 
 .tinder-dynamic-text {
   color: #000;
@@ -365,9 +430,9 @@ body.tinder-active .content-after {
   margin-bottom: 30px;
 }
 
-/* ============================================ */
+/* ===================== */
 /* CARD CONTAINER */
-/* ============================================ */
+/* ===================== */
 
 .tinder-card-container {
   position: relative;
@@ -382,9 +447,9 @@ body.tinder-active .content-after {
   align-items: center;
 }
 
-/* ============================================ */
+/* ===================== */
 /* CARD */
-/* ============================================ */
+/* ===================== */
 
 .tinder-card {
   position: absolute;
@@ -393,7 +458,6 @@ body.tinder-active .content-after {
   background: #fff;
   border-radius: 20px;
   overflow: hidden;
-  border: 1px solid #e0e0e0; 
   cursor: grab;
   will-change: transform, opacity;
   touch-action: none;
@@ -404,7 +468,6 @@ body.tinder-active .content-after {
 
 .tinder-card:active {
   cursor: grabbing;
-  border-color: #aaa; 
 }
 
 .tinder-card-img {
@@ -445,12 +508,10 @@ body.tinder-active .content-after {
   justify-content: center;
   cursor: pointer;
   transition: all 0.2s ease;
-  border: 1px solid #e0e0e0; 
 }
 
 .tinder-card-btn:hover {
   transform: scale(1.1);
-  border-color: #aaa;
 }
 
 .tinder-card-btn-nope {
@@ -477,6 +538,10 @@ body.tinder-active .content-after {
   display: none;
 }
 
+/* ===================== */
+/* CARD DESCRIPTION TEXT */
+/* ===================== */
+
 .card-description-text {
   max-width: min(1430px, 95vw);
   margin: 30px auto 0;
@@ -496,9 +561,9 @@ body.tinder-active .card-description-text {
   visibility: visible;
 }
 
-/* ============================================ */
+/* ===================== */
 /* SUCCESS BLOCK */
-/* ============================================ */
+/* ===================== */
 
 .tinder-success-block {
   position: absolute;
@@ -559,7 +624,6 @@ body.tinder-active .card-description-text {
   width: 70px;
   height: 70px;
   background: #fff;
-  border: 1px solid #e0e0e0;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -579,83 +643,165 @@ body.tinder-active .card-description-text {
   color: #000;
 }
 
-/* ============================================ */
-/* S2S */
-/* ============================================ */
+/* ===================== */
+/* RESULT CARD */
+/* ===================== */
 
-.cs-s2s-container {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-}
-
-.cs-s2s-container.visible {
-  display: flex;
-}
-
-.cs-s2s-preview {
-  /*max-width: 500px;*/
-  width: 90%;
-  margin: 0 auto;
-  transition: transform 0.3s ease;
-}
-
-.cs-s2s-card {
+.result-card {
   background: #fff;
   border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid #e0e0e0; 
+  padding: 30px;
+  margin-bottom: 40px;
 }
 
-.cs-s2s-image {
+.result-title {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #111;
+}
+
+.result-image {
   width: 100%;
+  border-radius: 12px;
+  margin-bottom: 20px;
 }
 
-.cs-s2s-image img {
-  width: 100%;
-  height: auto;
-  display: block;
+.result-description {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 20px;
 }
 
-.cs-s2s-content {
-  padding: 20px;
-  text-align: center;
-}
-
-.cs-s2s-url {
-  font-size: 16px;
-  color: #666;
-  margin-bottom: 15px;
-}
-
-.cs-s2s-button {
+.result-button {
   display: inline-block;
   padding: 14px 32px;
   background: #0066ff;
   color: #fff;
-  font-size: 16px;
-  font-weight: 500;
-  border: none;
+  text-decoration: none;
   border-radius: 8px;
-  cursor: pointer;
+  font-weight: 500;
   transition: background 0.3s ease;
 }
 
-.cs-s2s-button:hover {
+.result-button:hover {
   background: #0052cc;
 }
 
-/* ============================================ */
-/* RESPONSIVE */
-/* ============================================ */
+/* ===================== */
+/* S2S */
+/* ===================== */
 
-@media (max-width: 768px) {
-  .cs-title { 
-    font-size: 32px; 
+.cs-s2s-container{
+  position:relative;
+  bottom:0;
+  left:0;
+  width:100%;
+  z-index:9999;
+  height: 80vh;
+}
+
+.cs-s2s-container.visible{
+  display:block;
+}
+
+.cs-s2s-preview{
+  width: 100%;
+  margin:0 auto;
+}
+
+.cs-s2s-card{
+  background:#fff;
+  border-radius:12px;
+  overflow:hidden;
+}
+
+.cs-s2s-image{
+  width:100%;
+}
+
+.cs-s2s-content{
+  padding:16px;
+  text-align:center;
+}
+
+.cs-s2s-button{
+  margin-top:10px;
+  padding:12px 20px;
+  background:#000;
+  color:#fff;
+  border:none;
+  border-radius:8px;
+}
+
+/* ===================== */
+/* MOBILE */
+/* ===================== */
+
+@media(max-width:768px){
+  .cs-title{
+    font-size:28px;
+  }
+  
+  .cs-cards{
+    grid-template-columns:1fr;
+  }
+  
+  .cs-article {
+    padding: 16px;
+  }
+  
+  .cs-hero {
+    padding: 0 16px;
+  }
+  
+  .cs-subtitle {
+    font-size: 16px;
+  }
+  
+  .cs-title {
+    font-size: 28px;
+  }
+  
+  .cs-case-link {
+    margin: 8px 0 16px;
+  }
+  
+  .cs-case-block {
+    padding: 8px 12px;
+    gap: 12px;
+  }
+  
+  .cs-case-image {
+    width: 44px;
+    height: 44px;
+  }
+  
+  .cs-case-company {
+    font-size: 18px;
+  }
+  
+  .cs-case-published,
+  .cs-case-promo {
+    font-size: 14px;
+  }
+  
+  .cs-survey-section {
+    padding: 16px;
+  }
+  
+  .cs-survey-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .cs-survey-question {
+    font-size: 18px;
+  }
+  
+  .cs-survey-footer {
+    font-size: 13px;
   }
   
   .cs-cta-section { 
@@ -710,13 +856,51 @@ body.tinder-active .card-description-text {
   }
 }
 
-@media (max-width: 480px) {
-  .cs-title { 
-    font-size: 28px; 
+@media(max-width:480px){
+  .cs-article {
+    padding: 12px;
   }
   
-  .cs-section-title { 
-    font-size: 24px; 
+  .cs-hero {
+    padding: 0 12px;
+  }
+  
+  .cs-title {
+    font-size: 24px;
+  }
+  
+  .cs-subtitle {
+    font-size: 14px;
+  }
+  
+  .cs-section-title {
+    font-size: 22px;
+  }
+  
+  .cs-text {
+    font-size: 15px;
+  }
+  
+  .cs-case-company {
+    font-size: 16px;
+  }
+  
+  .cs-case-published,
+  .cs-case-promo {
+    font-size: 12px;
+  }
+  
+  .cs-case-image {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .cs-case-block {
+    gap: 8px;
+  }
+  
+  .cs-survey-question {
+    font-size: 16px;
   }
   
   .tinder-window { 
