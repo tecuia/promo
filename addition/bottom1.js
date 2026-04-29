@@ -4,7 +4,7 @@ if (window.CoreSmartS2S) {
     linkToShow: 'Brand.nativepage.ru',
     previewImage: 'imgs/car.png',
     previewImageMob: 'imgs/car.png',
-    minVisiblePercent: 0.8,
+    minVisiblePercent: 1.5,
     redirectDelay: 400
   });
 }

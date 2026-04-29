@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <title>CoreSmart Native</title>
   <link rel="stylesheet" href="bottom3.css">
 </head>
@@ -30,26 +31,32 @@
 
     <!-- Рекомендательный блок с карточками статей -->
     <section class="recommend">
-      <div class="recommend__grid">
-        <!-- Карточка 1 -->
-        <a href="#" class="recommend-card">
-          <img src="imgs/4.png" alt="Профилактика стиральных машин" class="recommend-card__image">
-          <div class="recommend-card__info">
-            <span class="recommend-card__badge">Полезное</span>
-            <h3 class="recommend-card__title">Профилактика стиральных машин</h3>
-            <p class="recommend-card__text">Стиральная машина — одна из самых нагруженных бытовых приборов в доме. При правильной эксплуатации она служит 10-15 лет, но ошибки в использовании могут сократить этот срок до 3-5 лет. Разбираемся, как избежать поломок и продлить жизнь технике без дорогостоящих ремонтов...</p>
+      <div class="recommend__grid swiper">
+        <div class="swiper-wrapper">
+          <!-- Карточка 1 -->
+          <div class="swiper-slide">
+            <a href="#" class="recommend-card">
+              <img src="imgs/4.png" alt="Профилактика стиральных машин" class="recommend-card__image">
+              <div class="recommend-card__info">
+                <span class="recommend-card__badge">Полезное</span>
+                <h3 class="recommend-card__title">Профилактика стиральных машин</h3>
+                <p class="recommend-card__text">Стиральная машина — одна из самых нагруженных бытовых приборов в доме. При правильной эксплуатации она служит 10-15 лет, но ошибки в использовании могут сократить этот срок до 3-5 лет. Разбираемся, как избежать поломок и продлить жизнь технике без дорогостоящих ремонтов...</p>
+              </div>
+            </a>
           </div>
-        </a>
 
-        <!-- Карточка 2 -->
-        <a href="#" class="recommend-card">
-          <img src="imgs/5.png" alt="Обзор стиральной машины" class="recommend-card__image">
-          <div class="recommend-card__info">
-            <span class="recommend-card__badge">Товар</span>
-            <h3 class="recommend-card__title">Обзор стиральной машины</h3>
-            <p class="recommend-card__text">Выбор стиральной машины в 2026 году превратился в сложный квест: сотни моделей, десятки функций и маркетинговые уловки, которые заставляют переплачивать...</p>
+          <!-- Карточка 2 -->
+          <div class="swiper-slide">
+            <a href="#" class="recommend-card">
+              <img src="imgs/5.png" alt="Обзор стиральной машины" class="recommend-card__image">
+              <div class="recommend-card__info">
+                <span class="recommend-card__badge">Товар</span>
+                <h3 class="recommend-card__title">Обзор стиральной машины</h3>
+                <p class="recommend-card__text">Выбор стиральной машины в 2026 году превратился в сложный квест: сотни моделей, десятки функций и маркетинговые уловки, которые заставляют переплачивать...</p>
+              </div>
+            </a>
           </div>
-        </a>
+        </div>
       </div>
     </section>
 
@@ -59,6 +66,7 @@
   </main>
 
   <script src="coresmart-s2s.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="bottom3.js"></script>
 </body>
 </html>

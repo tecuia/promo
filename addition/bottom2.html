@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <title>CoreSmart Native</title>
   <link rel="stylesheet" href="bottom2.css">
 </head>
@@ -32,39 +33,47 @@
     <section class="recommend">
       <span class="recommend__label">Может быть интересно..</span>
       
-      <div class="recommend__grid">
-        <!-- Карточка 1 -->
-        <a href="#" class="recommend-card">
-          <img src="imgs/1.png" alt="Стиральная машина Samsung" class="recommend-card__image">
-          <div class="recommend-card__info">
-            <h3 class="recommend-card__title">Стиральная машина Samsung</h3>
-            <p class="recommend-card__detail">Цвет: белый</p>
-            <p class="recommend-card__detail">Загрузка белья: 7кг</p>
-            <p class="recommend-card__detail">Габариты: 60x45x85 см</p>
+      <div class="recommend__grid swiper">
+        <div class="swiper-wrapper">
+          <!-- Карточка 1 -->
+          <div class="swiper-slide">
+            <a href="#" class="recommend-card">
+              <img src="imgs/1.png" alt="Стиральная машина Samsung" class="recommend-card__image">
+              <div class="recommend-card__info">
+                <h3 class="recommend-card__title">Стиральная машина Samsung</h3>
+                <p class="recommend-card__detail">Цвет: белый</p>
+                <p class="recommend-card__detail">Загрузка белья: 7 кг</p>
+                <p class="recommend-card__detail">Габариты: 60x45x85 см</p>
+              </div>
+            </a>
           </div>
-        </a>
 
-        <!-- Карточка 2 -->
-        <a href="#" class="recommend-card">
-          <img src="imgs/2.png" alt="Стиральная машина Candy" class="recommend-card__image">
-          <div class="recommend-card__info">
-            <h3 class="recommend-card__title">Стиральная машина Candy</h3>
-            <p class="recommend-card__detail">Цвет: белый</p>
-            <p class="recommend-card__detail">Загрузка белья: 11кг</p>
-            <p class="recommend-card__detail">Габариты: 70x55x65 см</p>
+          <!-- Карточка 2 -->
+          <div class="swiper-slide">
+            <a href="#" class="recommend-card">
+              <img src="imgs/2.png" alt="Стиральная машина Candy" class="recommend-card__image">
+              <div class="recommend-card__info">
+                <h3 class="recommend-card__title">Стиральная машина Candy</h3>
+                <p class="recommend-card__detail">Цвет: белый</p>
+                <p class="recommend-card__detail">Загрузка белья: 11 кг</p>
+                <p class="recommend-card__detail">Габариты: 70x55x65 см</p>
+              </div>
+            </a>
           </div>
-        </a>
 
-        <!-- Карточка 3 -->
-        <a href="#" class="recommend-card">
-          <img src="imgs/3.png" alt="Стиральная машина Bosh" class="recommend-card__image">
-          <div class="recommend-card__info">
-            <h3 class="recommend-card__title">Стиральная машина Bosh</h3>
-            <p class="recommend-card__detail">Цвет: белый</p>
-            <p class="recommend-card__detail">Загрузка белья: 14кг</p>
-            <p class="recommend-card__detail">Габариты: 90x75x80 см</p>
+          <!-- Карточка 3 -->
+          <div class="swiper-slide">
+            <a href="#" class="recommend-card">
+              <img src="imgs/3.png" alt="Стиральная машина Bosh" class="recommend-card__image">
+              <div class="recommend-card__info">
+                <h3 class="recommend-card__title">Стиральная машина Bosh</h3>
+                <p class="recommend-card__detail">Цвет: белый</p>
+                <p class="recommend-card__detail">Загрузка белья: 14 кг</p>
+                <p class="recommend-card__detail">Габариты: 90x75x80 см</p>
+              </div>
+            </a>
           </div>
-        </a>
+        </div>
       </div>
     </section>
 
@@ -74,6 +83,7 @@
   </main>
 
   <script src="coresmart-s2s.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="bottom2.js"></script>
 </body>
 </html>

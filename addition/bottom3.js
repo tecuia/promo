@@ -8,3 +8,21 @@ if (window.CoreSmartS2S) {
     redirectDelay: 400
   });
 }
+
+// Swiper — свободный скролл для карточек статей
+document.addEventListener('DOMContentLoaded', function() {
+  new Swiper('.recommend__grid', {
+    slidesPerView: 'auto',
+    spaceBetween: 12,
+    freeMode: true,
+    mousewheel: { forceToAxis: true },
+    breakpoints: {
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 20,
+        freeMode: false,
+        mousewheel: false
+      }
+    }
+  });
+});

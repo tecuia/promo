@@ -71,41 +71,42 @@
 
 createDOM(){
 
+  const isMobile = window.innerWidth <= 767;
+  const imgSrc = isMobile && this.options.previewImageMob 
+    ? this.options.previewImageMob 
+    : this.options.previewImage;
+
   const html = `
-    <div class="cs-s2s-container">
-      <div class="cs-s2s-preview">
-        <div class="cs-s2s-card">
-          <!-- Рамка браузера -->
-          <div class="cs-s2s-browser">
-            <!-- Адресная строка -->
-            <div class="cs-s2s-browser-top">
-              <div class="cs-s2s-browser-bar">
-                <svg class="cs-s2s-lock" width="12" height="12" viewBox="0 0 12 12" fill="none">
-                  <rect x="2" y="5" width="8" height="6" rx="1" fill="#999"/>
-                  <path d="M4 5V3.5C4 2.4 4.9 1.5 6 1.5C7.1 1.5 8 2.4 8 3.5V5" stroke="#999" stroke-width="1.2" fill="none"/>
-                </svg>
-                <span class="cs-s2s-url-text">${this.options.linkToShow || 'example.com'}</span>
-                <svg class="cs-s2s-reload" width="14" height="14" viewBox="0 0 14 14" fill="none">
-                  <circle cx="7" cy="7" r="5.25" stroke="#999" stroke-width="1.2" stroke-dasharray="33" stroke-dashoffset="8" fill="none"/>
-                  <path d="M7 1.75L5 3.75H9L7 1.75Z" fill="#999"/>
-                </svg>
+      <div class="cs-s2s-container">
+        <div class="cs-s2s-preview">
+          <div class="cs-s2s-card">
+            <div class="cs-s2s-browser">
+              <div class="cs-s2s-browser-top">
+                <div class="cs-s2s-browser-bar">
+                  <svg class="cs-s2s-lock" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                    <rect x="2.5" y="5" width="7" height="5.5" rx="1" fill="#999"/>
+                    <path d="M4 5V3.5C4 2.4 4.9 1.5 6 1.5C7.1 1.5 8 2.4 8 3.5V5" stroke="#999" stroke-width="1.2" fill="none"/>
+                  </svg>
+                  <span class="cs-s2s-url-text">${this.options.linkToShow || 'example.com'}</span>
+                  
+                  <svg class="cs-s2s-reload" width="14" height="14" viewBox="0 0 24 24" fill="none">
+                    <path d="M20 12A8 8 0 1 1 12 4" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M9 1L12 4L9 7" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  
+                </div>
+              </div>
+              <div class="cs-s2s-image">
+                <img src="${imgSrc}" alt="Preview" loading="lazy">
               </div>
             </div>
-            <!-- Скриншот -->
-            <picture class="cs-s2s-image">
-              <source srcset="${this.options.previewImage}" media="(min-width: 1024px)">
-              <source srcset="${this.options.previewImageMob}" media="(max-width: 767px)">
-              <img src="${this.options.previewImage}" alt="Preview">
-            </picture>
           </div>
         </div>
       </div>
-    </div>
-  `
-
-  this.el = createElement(html)
-  document.body.appendChild(this.el)
-  this.preview = this.el.querySelector(".cs-s2s-preview")
+    `;
+  this.el = createElement(html);
+  document.body.appendChild(this.el);
+  this.preview = this.el.querySelector(".cs-s2s-preview");
 }
 
     /* ============================

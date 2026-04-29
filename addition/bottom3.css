@@ -106,32 +106,43 @@ body {
 
 .cs-s2s-browser-top {
   padding: 10px 16px;
-  background: #f5f5f5;
+  background: #fff;
   border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: center;
 }
 
 .cs-s2s-browser-bar {
   display: flex;
   align-items: center;
-  gap: 8px;
-  background: #fff;
+  gap: 0;
+  background: #ececec;
   border-radius: 8px;
   padding: 6px 12px;
-  justify-content: center;
+  max-width: 50%;
+  min-width: 180px;
+  width: 100%;
+  position: relative;
 }
 
 .cs-s2s-lock {
   flex-shrink: 0;
+  margin-right: 6px;
+  margin-left: auto;
 }
 
 .cs-s2s-url-text {
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 13px;
   color: #666;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .cs-s2s-reload {
   flex-shrink: 0;
+  margin-left: auto;
 }
 
 .cs-s2s-image img {
@@ -153,6 +164,20 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
+  overflow: visible;
+}
+
+.recommend__grid.swiper {
+  display: block;
+  overflow: hidden;
+}
+
+.recommend__grid .swiper-wrapper {
+  display: flex;
+}
+
+.recommend__grid .swiper-slide {
+  height: auto;
 }
 
 .recommend-card {
@@ -162,6 +187,8 @@ body {
   overflow: hidden;
   border: 1px solid #e8e8e8;
   transition: box-shadow 0.2s ease;
+  width: 100%;
+  display: block;
 }
 
 .recommend-card:hover {
@@ -209,6 +236,10 @@ body {
   max-width: 100%;
 }
 
+/* ===================== */
+/* SCROLL HINT */
+/* ===================== */
+
 .scroll-hint {
   max-width: 600px;
   width: 100%;
@@ -251,6 +282,18 @@ body {
     padding: 0 16px;
   }
 
+  .cs-s2s-browser-bar {
+    max-width: 55%;
+  }
+
+  .cs-s2s-lock {
+    margin-right: 5px;
+  }
+
+  .cs-s2s-reload {
+    margin-left: auto;
+  }
+
   .recommend {
     margin-top: 40px;
   }
@@ -268,8 +311,8 @@ body {
   }
 
   .scroll-hint {
-    font-size: 18px;
-    margin-top: 30px;
+    font-size: 20px;
+    margin-top: 40px;
   }
 }
 
@@ -279,25 +322,34 @@ body {
 
 @media (max-width: 767px) {
   .header {
-    padding: 16px;
-    justify-content: center;
+    padding: 20px 0 20px 12px;
+    justify-content: flex-start;
   }
 
   .header__logo {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
   }
 
   .header__text {
-    font-size: 18px;
+    font-size: 20px;
   }
 
   .content {
-    padding: 20px 12px;
+    padding: 20px 0;
+  }
+
+  .content__image {
+    display: block;
+    padding: 0 12px;
+    width: calc(100% - 24px);
+    margin: 0 auto;
   }
 
   .article {
     margin-top: 30px;
+    padding: 0 12px;
+    max-width: 100%;
   }
 
   .article__title {
@@ -323,43 +375,67 @@ body {
 
   .cs-s2s-browser-top {
     padding: 8px 12px;
-    gap: 8px;
+    background: #000;
+    border-bottom: 1px solid #000;
+    display: flex;
+    justify-content: center;
   }
 
-  .cs-s2s-browser-dots {
-    gap: 4px;
+  .cs-s2s-browser-bar {
+    padding: 6px 8px;
+    gap: 0;
+    background: #fff;
+    border-radius: 6px;
+    max-width: 65%;
+    min-width: 140px;
+    width: 100%;
+    position: relative;
   }
 
-  .cs-s2s-dot {
-    width: 8px;
-    height: 8px;
+  .cs-s2s-lock {
+    width: 10px;
+    height: 10px;
+    margin-right: 5px;
+    margin-left: auto;
   }
 
-  .cs-s2s-browser-url {
+  .cs-s2s-url-text {
     font-size: 11px;
-    padding: 4px 8px;
+  }
+
+  .cs-s2s-reload {
+    width: 12px;
+    height: 12px;
+    margin-left: auto;
   }
 
   .recommend {
     max-width: 100%;
     margin-top: 40px;
+    padding: 0;
   }
 
   .recommend__grid {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 12px;
-    padding: 0 12px 8px;
+    display: block !important;
+    overflow: hidden;
+    padding: 0 12px;
   }
 
-  .recommend-card {
-    flex: 0 0 280px;
-    scroll-snap-align: start;
+  .recommend__grid .swiper-slide {
+    width: 280px;
   }
 
   .recommend-card__image {
     height: 170px;
+  }
+
+  .recommend-card__info {
+    padding: 12px;
+  }
+
+  .recommend-card__badge {
+    font-size: 11px;
+    padding: 3px 8px;
   }
 
   .recommend-card__title {
@@ -373,9 +449,9 @@ body {
   .scroll-hint {
     max-width: 100%;
     padding: 0 12px;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 140%;
-    margin-top: 30px;
+    margin-top: 40px;
   }
 }
 
@@ -384,13 +460,27 @@ body {
 /* ===================== */
 
 @media (max-width: 480px) {
+  .header {
+    padding: 16px 0 16px 8px;
+    justify-content: flex-start;
+  }
+
   .header__logo {
     width: 36px;
     height: 36px;
   }
 
   .header__text {
-    font-size: 16px;
+    font-size: 18px;
+  }
+
+  .content__image {
+    padding: 0 8px;
+    width: calc(100% - 16px);
+  }
+
+  .article {
+    padding: 0 8px;
   }
 
   .article__title {
@@ -412,19 +502,45 @@ body {
 
   .cs-s2s-browser-top {
     padding: 6px 10px;
+    background: #000;
+    display: flex;
+    justify-content: center;
   }
 
-  .cs-s2s-dot {
-    width: 6px;
-    height: 6px;
+  .cs-s2s-browser-bar {
+    padding: 4px 8px;
+    border-radius: 5px;
+    background: #fff;
+    max-width: 70%;
+    min-width: 120px;
+    gap: 0;
+    width: 100%;
+    position: relative;
   }
 
-  .cs-s2s-browser-url {
+  .cs-s2s-lock {
+    width: 8px;
+    height: 8px;
+    margin-right: 4px;
+    margin-left: auto;
+  }
+
+  .cs-s2s-url-text {
     font-size: 10px;
   }
 
-  .recommend-card {
-    flex: 0 0 250px;
+  .cs-s2s-reload {
+    width: 10px;
+    height: 10px;
+    margin-left: auto;
+  }
+
+  .recommend__grid {
+    padding: 0 8px;
+  }
+
+  .recommend__grid .swiper-slide {
+    width: 250px;
   }
 
   .recommend-card__image {
@@ -440,6 +556,9 @@ body {
   }
 
   .scroll-hint {
-    font-size: 14px;
+    padding: 0 8px;
+    font-size: 16px;
+    line-height: 140%;
+    margin-top: 40px;
   }
 }

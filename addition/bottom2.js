@@ -8,3 +8,21 @@ if (window.CoreSmartS2S) {
     redirectDelay: 400
   });
 }
+
+// Swiper — свободный скролл для карточек товаров
+document.addEventListener('DOMContentLoaded', function() {
+  new Swiper('.recommend__grid', {
+    slidesPerView: 'auto',
+    spaceBetween: 12,
+    freeMode: true,
+    mousewheel: { forceToAxis: true },
+    breakpoints: {
+      768: {
+        slidesPerView: 3,
+        spaceBetween: 20,
+        freeMode: false,
+        mousewheel: false
+      }
+    }
+  });
+});
