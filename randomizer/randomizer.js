@@ -189,7 +189,7 @@
   }
 
   // ============================================
-  // RESUBMIT LOADING (сосед wrapper, позиционируется над ним)
+  // RESUBMIT LOADING (сосед wrapper, поверх него)
   // ============================================
 
   let overlaySpinner = null;
@@ -211,14 +211,11 @@
       `;
     }
     
-    // Вставляем спиннер сразу после wrapper
     if (!overlaySpinner.parentNode) {
       wrapper.parentNode.insertBefore(overlaySpinner, wrapper.nextSibling);
     }
     
     overlaySpinner.style.display = 'flex';
-    
-    // Позиционируем поверх wrapper
     positionOverlayOnWrapper();
     
     gsap.fromTo(overlaySpinner, 
@@ -483,6 +480,17 @@
         
         enableScroll();
         
+        // Инициализируем CoreSmartS2S как в тиндере
+        if (typeof CoreSmartS2S !== 'undefined') {
+          CoreSmartS2S.init({
+            linkToOpen: "https://inpool.ru/",
+            previewImage: "./imgs/preview.png",
+            previewImageMob: "./imgs/previewMob.png",
+            minVisiblePercent: 0.8,
+            redirectDelay: 400
+          });
+        }
+        
         requestAnimationFrame(() => {
           requestAnimationFrame(() => {
             const targetY = contentAfter.getBoundingClientRect().top + window.scrollY;
@@ -683,6 +691,12 @@
     lastContentKey = 'default';
     
     cleanupScrollBlocker();
+    
+    // Удаляем S2S контейнер если был создан
+    const s2sContainer = document.querySelector('.cs-s2s-container');
+    if (s2sContainer) {
+      s2sContainer.remove();
+    }
     
     if (animationWrapper && randomizerBlock) {
       animationWrapper.appendChild(randomizerBlock);
