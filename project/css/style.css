@@ -306,7 +306,6 @@ body.randomizer-active .content-after {
   overflow: hidden;
   width: 100%;
   gap: 30px;
-  /* Для рандомайзера */
 }
 
 /* ===================== ОБЩИЕ ЭЛЕМЕНТЫ МЕХАНИК ===================== */
@@ -336,7 +335,6 @@ body.randomizer-active .content-after {
   width: 6px;
   height: 6px;
   background: #000;
-  /* Переопределяется инлайн или в дочерних селекторах */
   border-radius: 50%;
   transform-origin: 3px 3px;
   transform: rotate(calc(22.5deg * var(--i))) translate(0, -22px);
