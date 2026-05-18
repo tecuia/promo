@@ -253,7 +253,7 @@
               linkToOpen: "https://inpool.ru/",
               linkToShow: "inpool.ru",
               previewImage: "./imgs/preview.png",
-              previewImageMob: "./imgs/previewMob.png",
+              previewImageMob: "./imgs/preview.png",
               minScrollPercent: 100
             });
           }
@@ -882,7 +882,7 @@
               linkToOpen: "https://inpool.ru/",
               linkToShow: "inpool.ru",
               previewImage: "./imgs/preview.png",
-              previewImageMob: "./imgs/previewMob.png",
+              previewImageMob: "./imgs/preview.png",
               minScrollPercent: 100
             });
           }
@@ -1282,91 +1282,119 @@
       return 'default';
     }
 
-    function collapseWindowForCompletion() {
-      isCollapsed = true;
-      if (mainScrollTrigger) {
-        mainScrollTrigger.kill();
-        mainScrollTrigger = null;
-      }
-      if (contentBefore) contentBefore.style.display = 'none';
-      lastContentKey = getContent();
-      const wrapper = ensureResultWrapper();
-      updateExternalResult(wrapper);
-      const tl = gsap.timeline({
-        onComplete: () => {
-          document.body.classList.remove('randomizer-active');
-          if (animationWrapper) animationWrapper.style.display = 'none';
-          if (contentAfter && randomizerBlock) contentAfter.insertBefore(randomizerBlock, contentAfter.firstChild);
-          if (contentAfter && wrapper) contentAfter.insertBefore(wrapper, contentAfter.children[1] || null);
-          if (loadingWrapper && contentAfter) contentAfter.insertBefore(loadingWrapper, contentAfter.children[2] || null);
-          if (contentAfter) {
-            contentAfter.style.opacity = '1';
-            contentAfter.style.visibility = 'visible';
-          }
-          enableScroll();
-          if (typeof CoreSmartS2S !== 'undefined') {
-            CoreSmartS2S.init({
-              linkToOpen: "https://inpool.ru/",
-              previewImage: "./imgs/preview.png",
-              previewImageMob: "./imgs/previewMob.png",
-              minVisiblePercent: 0.8,
-              redirectDelay: 400
-            });
-          }
-          requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-              const targetY = contentAfter.getBoundingClientRect().top + window.scrollY;
-              window.scrollTo({
-                top: targetY,
-                behavior: 'instant'
-              });
-              setupScrollBlockerWithValue(targetY);
-              resultShown = false;
-            });
-          });
-          mechanicCompleted = true;
+// ============================================
+// COLLAPSE WINDOW
+// ============================================
+
+  function collapseWindowForCompletion() {
+    isCollapsed = true;
+    
+    lastContentKey = getContent();
+
+    const wrapper = ensureResultWrapper();
+    updateExternalResult(wrapper);
+
+    const tl = gsap.timeline({
+      onComplete: () => {
+        if (mainScrollTrigger) {
+          mainScrollTrigger.kill();
+          mainScrollTrigger = null;
         }
-      });
-      tl.to([randomizerCtaText, randomizerTop], {
-        y: -20,
-        opacity: 0,
-        duration: 0.35,
-        stagger: 0.05,
-        ease: "power2.in"
-      }, 0);
-      tl.to(randomizerContent, {
-        padding: "20px 20px",
-        gap: "16px",
-        duration: 0.5,
-        ease: "power2.inOut"
-      }, 0.15);
-      tl.to(randomizerBlock, {
-        height: "auto",
-        width: "min(720px, 95vw)",
-        borderRadius: "16px",
-        duration: 0.6,
-        ease: "power2.inOut"
-      }, 0.2);
-      tl.to(randomizerBlock, {
-        scale: 1.01,
-        duration: 0.15,
-        ease: "power1.out"
-      }, "-=0.1").to(randomizerBlock, {
-        scale: 1,
-        duration: 0.2,
-        ease: "power1.inOut"
-      });
-      gsap.set(wrapper, {
-        opacity: 0,
-        y: 30
-      });
-      tl.to(wrapper, {
-        opacity: 1,
-        y: 0,
-        duration: 0.5,
-        ease: "power2.out"
-      }, "-=0.2");
-    }
+        
+        if (contentBefore) {
+          contentBefore.style.display = 'none';
+        }
+        
+        document.body.classList.remove('randomizer-active');
+        
+        if (animationWrapper) {
+          animationWrapper.style.display = 'none';
+        }
+        
+        if (contentAfter && randomizerBlock) {
+          contentAfter.insertBefore(randomizerBlock, contentAfter.firstChild);
+        }
+        
+        if (contentAfter && wrapper) {
+          contentAfter.insertBefore(wrapper, contentAfter.children[1] || null);
+        }
+        
+        if (loadingWrapper && contentAfter) {
+          contentAfter.insertBefore(loadingWrapper, contentAfter.children[2] || null);
+        }
+        
+        if (contentAfter) {
+          contentAfter.style.opacity = '1';
+          contentAfter.style.visibility = 'visible';
+        }
+        
+        if (originalScrollBehavior) {
+          document.body.style.position = originalScrollBehavior.position || '';
+          document.body.style.top = originalScrollBehavior.top || '';
+          document.body.style.width = originalScrollBehavior.width || '';
+          document.body.style.paddingRight = originalScrollBehavior.paddingRight || '';
+          document.body.classList.remove('no-scroll');
+          originalScrollBehavior = null;
+        }
+        
+        const targetY = contentAfter.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo(0, targetY);
+        
+        setupScrollBlockerWithValue(targetY);
+        
+        if (typeof CoreSmartS2S !== 'undefined') {
+          CoreSmartS2S.init({
+            linkToOpen: "https://inpool.ru/",
+            previewImage: "./imgs/preview.png",
+            previewImageMob: "./imgs/previewMob.png",
+            minVisiblePercent: 0.8,
+            redirectDelay: 400
+          });
+        }
+        
+        resultShown = false;
+        mechanicCompleted = true;
+      }
+    });
+
+    tl.to(randomizerContent, {
+      padding: "20px 20px",
+      gap: "16px",
+      duration: 0.4,
+      ease: "power2.inOut"
+    }, 0);
+
+    tl.to(randomizerBlock, {
+      height: "auto",
+      width: "min(720px, 95vw)",
+      borderRadius: "16px",
+      duration: 0.5,
+      ease: "power2.inOut"
+    }, 0);
+
+    tl.to(randomizerBlock, {
+      scale: 1.01,
+      duration: 0.15,
+      ease: "power1.out"
+    }, "-=0.1")
+    .to(randomizerBlock, {
+      scale: 1,
+      duration: 0.15,
+      ease: "power1.inOut"
+    });
+
+    gsap.set(wrapper, { 
+      opacity: 0, 
+      y: 20
+    });
+    
+    tl.to(wrapper, { 
+      opacity: 1, 
+      y: 0, 
+      duration: 0.4, 
+      ease: "power2.out" 
+    }, "-=0.2");
+  }
 
     function updateExternalResult(wrapper) {
       const content = CONTENT_MAP[lastContentKey] || CONTENT_MAP.default;
